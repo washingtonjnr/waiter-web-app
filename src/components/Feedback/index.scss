@@ -1,0 +1,113 @@
+@import "/src/common/styles/colors.scss";
+
+.feedback-alert {
+    right: 20px;
+    bottom: 75px;
+    display: flex;
+    z-index: 9999;
+    position: fixed;
+    font-size: 14px;
+    min-width: 160px;
+    max-width: 460px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #FFF;
+    animation-duration: 0.3s;
+    animation-name: FeedBackMoveIn;
+    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+
+    &.removed {
+        animation-name: FeedBackMoveOut;
+    }
+
+    &.info {
+        background-color: #caf1ec;
+        color: getColor(status, info);
+        border: 1px solid getColor(status, info);
+
+        .container-text {
+            border-right: 1px solid getColor(status, info, .4);
+        }
+    }
+
+    &.error {
+        background-color: #FADDDD;
+        color: getColor(status, error);
+        border: 1px solid getColor(status, error);
+
+        .container-text {
+            border-right: 1px solid getColor(status, error, .4);
+        }
+    }
+
+    &.success {
+        background-color: #D9F5E8;
+        color: getColor(status, darkSuccess);
+        border: 1px solid getColor(status, success);
+
+        .container-text {
+            border-right: 1px solid getColor(status, success, .4);
+        }
+    }
+
+    &.warning {
+        background-color: #F1F0C3;
+        color: getColor(status, warning);
+        border: 1px solid getColor(status, warning);
+
+        .container-text {
+            border-right: 1px solid getColor(status, warning, .4);
+        }
+    }
+
+    .icon {
+        font-size: 24px;
+    }
+
+    .container-text {
+        display: flex;
+        margin: 0 8px;
+        min-width: 160px;
+        max-width: 500px;
+        padding-right: 8px;
+        flex-direction: column;
+    }
+
+    .icon-close {
+        font-size: 14px;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            opacity: .6;
+        }
+    }
+
+
+    @keyframes FeedBackMoveIn {
+        0% {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        100% {
+            max-height: 150px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes FeedBackMoveOut {
+        100% {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        0% {
+            max-height: 150px;
+            opacity: 1;
+        }
+    }
+
+}
